@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+      unordered_set<char> seen;
+      int n = s.length();
+
+    
+    // 2. Store the character as the KEY, index as the VALUE
+    
+
+
+      int left = 0;
+      int longest = 0;
+    for(int right = 0; right < n; right++){
+          while(seen.count(s[right])){
+            seen.erase(s[left]);
+            left++;
+          }
+          seen.insert(s[right]);
+
+        longest = max(longest, right - left + 1);
+      
+    }
+    return longest;
+    }
+};
